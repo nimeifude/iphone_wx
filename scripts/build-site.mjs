@@ -169,12 +169,34 @@ function screwRows(guide) {
       if (!/mm|millimeter/i.test(text)) continue;
       rows.push({
         step: clean(step.title || `Step ${step.stepid}`),
+        stepid: step.stepid,
         color: line.bullet || "black",
+        image: mediaUrl(step),
         text
       });
     }
   }
   return rows;
+}
+
+function screwPhotoEntries({ model, repair, guide }) {
+  const groups = new Map();
+  for (const row of screwRows(guide)) {
+    if (!row.image) continue;
+    const key = `${row.stepid}:${row.image}`;
+    if (!groups.has(key)) {
+      groups.set(key, {
+        model,
+        repair,
+        guide,
+        title: row.step,
+        image: row.image,
+        rows: []
+      });
+    }
+    groups.get(key).rows.push(row);
+  }
+  return [...groups.values()];
 }
 
 function chosenSteps(guide) {
@@ -334,7 +356,114 @@ function pendingPage({ model, repair }) {
   return pageShell({ title, description, model, canonicalPath: `/repairs/${repair}/${slug(model.name)}.html`, robots: "noindex,follow", body });
 }
 
+function screwLibraryPage(entries) {
+  const title = "iPhone Screw Location Photos | Screw Maps by Model";
+  const description = "Browse real iPhone screw location photos by model and repair type, with millimeter screw notes linked to verified iPhone repair guides.";
+  const indexItems = entries.map((entry, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "url": `${siteUrl}/repairs/${entry.repair}/${slug(entry.model.name)}.html#screws`,
+    "name": `${entry.model.name} ${repairLabels[entry.repair]} screw location photo`
+  }));
+  const schema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": title,
+      "description": description,
+      "inLanguage": "en",
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": indexItems
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteUrl}/` },
+        { "@type": "ListItem", "position": 2, "name": "iPhone Screw Location Photos", "item": `${siteUrl}/screw-location-photos.html` }
+      ]
+    }
+  ];
+  const grouped = Map.groupBy(entries, entry => entry.model.series);
+  const order = ["X", "11", "12", "13", "14", "15", "16", "17"];
+  const seriesSections = order.filter(series => grouped.has(series)).map(series => {
+    const cards = grouped.get(series).map(entry => {
+      const href = `repairs/${entry.repair}/${slug(entry.model.name)}.html#screws`;
+      return `<article class="screw-photo-card">
+        <a class="screw-photo-image" href="${href}">
+          <img src="${entry.image}" alt="${entry.model.name} ${repairLabels[entry.repair]} screw location photo for ${entry.title}" loading="lazy">
+        </a>
+        <div class="screw-photo-copy">
+          <p class="library-meta">${entry.model.name} / ${repairLabels[entry.repair]}</p>
+          <h3>${entry.title}</h3>
+          <ul>
+            ${entry.rows.map(row => `<li><span>${row.color}</span>${row.text}</li>`).join("")}
+          </ul>
+          <a class="library-link" href="${href}">Open screw table and guide</a>
+        </div>
+      </article>`;
+    }).join("");
+    return `<section class="library-series" id="series-${series.toLowerCase()}">
+      <div class="library-series-heading">
+        <p class="eyebrow">iPhone ${series} Series</p>
+        <h2>${series === "X" ? "iPhone X, XR, XS, and XS Max screw photos" : `iPhone ${series} screw location photos`}</h2>
+      </div>
+      <div class="screw-photo-grid">${cards}</div>
+    </section>`;
+  }).join("");
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${title}</title>
+  <meta name="description" content="${description}">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="${siteUrl}/screw-location-photos.html">
+  <link rel="stylesheet" href="detail.css">
+  <script type="application/ld+json">${JSON.stringify(schema)}</script>
+</head>
+<body class="library-page">
+  <nav class="topbar">
+    <a href="index.html">Apple iPhone Repair Guides</a>
+    <div class="topbar__links">
+      <a href="#photo-library">Photos</a>
+      <a href="index.html#models">Models</a>
+      <a href="index.html#repairs">Repair Types</a>
+    </div>
+  </nav>
+  <header class="library-hero">
+    <div>
+      <p class="eyebrow">Screw Photo Library</p>
+      <h1>iPhone screw location photos by model</h1>
+      <p>Find real screw location photos before opening an iPhone. Each gallery card links to the repair guide that contains the source image and the exact screw-length notes in millimeters.</p>
+    </div>
+    <div class="library-stats" aria-label="Screw photo library statistics">
+      <strong>${entries.length}</strong>
+      <span>photo steps with verified screw measurements</span>
+    </div>
+  </header>
+  <main id="photo-library">
+    <section class="section library-intro">
+      <div>
+        <p class="eyebrow">Use the photos carefully</p>
+        <h2>Why screw location photos matter</h2>
+      </div>
+      <p>iPhone repairs mix different screw lengths in small connector covers, display brackets, battery access parts, and rear glass assemblies. Use the photo marker, measured screw note, and model-specific guide together before reassembly.</p>
+    </section>
+    ${seriesSections}
+    <section class="section" id="sources">
+      <div class="status-note">Photo sources and screw notes are linked from each verified guide. Replace third-party source photos with original or commercially licensed workshop photos before a monetized public launch.</div>
+    </section>
+  </main>
+</body>
+</html>`;
+}
+
 async function build() {
+  const screwLibraryEntries = [];
   for (const repair of Object.keys(repairLabels)) {
     await mkdir(path.join(root, "repairs", repair), { recursive: true });
   }
@@ -346,15 +475,18 @@ async function build() {
       if (guideIds[key]) {
         const res = await fetch(`https://www.ifixit.com/api/2.0/guides/${guideIds[key]}`);
         if (!res.ok) throw new Error(`Failed to fetch iFixit guide ${guideIds[key]}: ${res.status}`);
-        html = verifiedPage({ model, repair, guide: await res.json() });
+        const guide = await res.json();
+        html = verifiedPage({ model, repair, guide });
+        if (screwRows(guide).length) screwLibraryEntries.push(...screwPhotoEntries({ model, repair, guide }));
       } else {
         html = pendingPage({ model, repair });
       }
       await writeFile(path.join(root, "repairs", repair, `${slug(model.name)}.html`), html, "utf8");
     }
   }
+  await writeFile(path.join(root, "screw-location-photos.html"), screwLibraryPage(screwLibraryEntries), "utf8");
 
-  console.log(`Built ${models.length * Object.keys(repairLabels).length} English repair pages.`);
+  console.log(`Built ${models.length * Object.keys(repairLabels).length} English repair pages and ${screwLibraryEntries.length} screw photo entries.`);
 }
 
 await build();

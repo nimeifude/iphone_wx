@@ -194,6 +194,7 @@ main {
 }
 
 .repair-tabs,
+.screw-library-home,
 .model-nav,
 .notice,
 .source-note {
@@ -422,6 +423,52 @@ main {
 .notice li { margin-bottom: 10px; }
 .source-note { color: var(--muted); }
 
+.home-screw-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.home-screw-grid article {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 8px 28px rgba(25, 35, 48, .06);
+}
+
+.home-screw-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: #e7edf4;
+}
+
+.home-screw-grid div {
+  padding: 14px 15px 16px;
+}
+
+.home-screw-grid h3 {
+  font-size: 1.05rem;
+}
+
+.home-screw-grid p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.section-cta {
+  display: inline-flex;
+  margin-top: 18px;
+  border-radius: 7px;
+  padding: 11px 15px;
+  background: #182434;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 900;
+}
+
 .content-page {
   width: min(860px, calc(100% - 32px));
   margin: 0 auto;
@@ -455,6 +502,7 @@ main {
   .hero-gallery { min-height: 360px; }
   .tablist { grid-template-columns: 1fr; }
   .model-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .home-screw-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 540px) {
