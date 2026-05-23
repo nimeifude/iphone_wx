@@ -1,0 +1,6 @@
+tmp/
+node_modules/
+
+New project/
+assets/repair-photos/local/*.ps1
+

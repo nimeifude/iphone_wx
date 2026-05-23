@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-labelledby="title desc">
+  <title id="title">Back glass screw diagram</title>
+  <desc id="desc">Original rear phone repair diagram with back glass screw positions highlighted.</desc>
+  <defs>
+    <linearGradient id="mat" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#b8ccd7"/>
+      <stop offset="1" stop-color="#7e8d82"/>
+    </linearGradient>
+    <linearGradient id="rear" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#e2d7c5"/>
+      <stop offset="1" stop-color="#a69c91"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="460" fill="url(#mat)"/>
+  <rect x="173" y="32" width="294" height="394" rx="68" fill="url(#rear)" stroke="#5d625f" stroke-width="6"/>
+  <rect x="201" y="67" width="112" height="112" rx="34" fill="#bcb5ab" stroke="#6a6e6d" stroke-width="5"/>
+  <g fill="#20262c" stroke="#8e9495" stroke-width="5">
+    <circle cx="233" cy="101" r="24"/>
+    <circle cx="281" cy="101" r="24"/>
+    <circle cx="233" cy="148" r="24"/>
+  </g>
+  <circle cx="281" cy="148" r="10" fill="#f3e1b6"/>
+  <path d="M336 142h87" stroke="#8a7464" stroke-width="14" stroke-linecap="round" opacity=".52"/>
+  <rect x="318" y="218" width="102" height="94" rx="22" fill="#343b42" stroke="#59636c" stroke-width="5"/>
+  <rect x="340" y="240" width="58" height="50" rx="12" fill="#727d86"/>
+  <g fill="#4e5962">
+    <circle cx="327" cy="228" r="7"/>
+    <circle cx="411" cy="228" r="7"/>
+    <circle cx="327" cy="302" r="7"/>
+  </g>
+  <g fill="none" stroke-width="8">
+    <circle cx="327" cy="228" r="28" stroke="#ef4a4a"/>
+    <circle cx="411" cy="228" r="28" stroke="#4d85ef"/>
+    <circle cx="327" cy="302" r="28" stroke="#f0b13f"/>
+  </g>
+  <g stroke="#eff3f5" stroke-width="3" stroke-linecap="round">
+    <path d="M320 228h14M327 221v14"/>
+    <path d="M404 228h14M411 221v14"/>
+    <path d="M320 302h14M327 295v14"/>
+  </g>
+  <path d="M108 374l49-49" stroke="#2d363e" stroke-width="20" stroke-linecap="round"/>
+  <path d="M98 384l31-31" stroke="#d9b56d" stroke-width="10" stroke-linecap="round"/>
+</svg>

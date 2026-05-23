@@ -12,7 +12,7 @@ const repairs = {
     risk: "Main risks: punctured battery, board connectors, Taptic Engine"
   },
   backglass: {
-    title: "Back Glass Repair",
+    title: "Back Glass Replacement",
     copy: "For shattered rear glass, sharp edges, damaged wireless charging areas, or rear housing replacement planning.",
     tools: "Common tools: heat plate, laser, scraper, eye protection",
     risk: "Main risks: wireless charging coil, cameras, flash flex cable"
@@ -189,6 +189,7 @@ function imageData(model) {
 }
 
 function renderSummary() {
+  if (!summary) return;
   const item = repairs[currentRepair];
   summary.innerHTML = `
     <div>

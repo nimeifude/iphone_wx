@@ -11,7 +11,7 @@ This project is designed for original, verified repair content:
 - Model-specific safety notes.
 - Clear source references for technical verification.
 
-The current build pipeline can create research pages from iFixit guide data while the site is being assembled. Do not assume those external photos or copied step text are cleared for an ad-supported commercial site. Replace external guide photos and source text with original or commercially licensed content before public monetized launch.
+The current site is assembled as static pages with local image assets. Before public monetized launch, confirm that every photo, measurement, and instruction text is original or commercially licensed.
 
 ## Build
 
@@ -20,14 +20,31 @@ node scripts/build-site.mjs
 node scripts/generate-sitemap.mjs
 ```
 
+## Local photo assets
+
+`scripts/build-site.mjs` can swap source repair-photo URLs for authorized local assets while it generates tutorial pages and the screw photo library.
+
+1. Put licensed or original images in an `assets/` folder.
+2. Copy `photo-assets.example.json` to `photo-assets.json`.
+3. Map each source photo URL to a project-relative asset path such as `assets/repair-photos/example.jpg`.
+4. Rebuild the site.
+
+To cache the repair photos already referenced by the generated HTML pages and rewrite those pages to use local files, run:
+
+```powershell
+node scripts/localize-photos.mjs
+```
+
+Repair photos are stored under `assets/repair-photos/local/` and referenced directly from the static pages.
+Pass a site subdirectory to rewrite a duplicate generated site with the same shared local images, for example `node scripts/localize-photos.mjs "New project"`.
+
 ## SEO launch checklist
 
 1. Set the real domain in `site.config.json`.
 2. Rebuild detail pages and regenerate `sitemap.xml` and `robots.txt`.
-3. Replace the placeholder contact email in `contact.html`.
-4. Finalize the privacy policy for analytics, cookies, ads, and target regions.
-5. Add verified pages to Search Console and submit the sitemap.
-6. Keep thin or unverified pages `noindex,follow` until they contain original repair value.
+3. Finalize the privacy policy for analytics, cookies, ads, and target regions.
+4. Add verified pages to Search Console and submit the sitemap.
+5. Keep thin or unverified pages `noindex,follow` until they contain original repair value.
 
 ## AdSense launch checklist
 

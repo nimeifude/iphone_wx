@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-labelledby="title desc">
+  <title id="title">Display bracket screw diagram</title>
+  <desc id="desc">Original opened phone repair diagram with display bracket screw positions highlighted.</desc>
+  <defs>
+    <linearGradient id="mat" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#d9d0c0"/>
+      <stop offset="1" stop-color="#788c97"/>
+    </linearGradient>
+    <linearGradient id="frame" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#252c34"/>
+      <stop offset="1" stop-color="#0d1117"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="460" fill="url(#mat)"/>
+  <rect x="64" y="58" width="224" height="344" rx="52" fill="#11161d" stroke="#46515c" stroke-width="6" transform="rotate(-8 64 58)"/>
+  <rect x="78" y="76" width="196" height="307" rx="42" fill="#17212b" opacity=".88" transform="rotate(-8 78 76)"/>
+  <rect x="326" y="53" width="234" height="356" rx="54" fill="url(#frame)" stroke="#4e5964" stroke-width="6"/>
+  <rect x="361" y="102" width="112" height="225" rx="30" fill="#303945"/>
+  <rect x="484" y="158" width="43" height="104" rx="18" fill="#56616d"/>
+  <path d="M515 126c-57 6-86 34-106 77" fill="none" stroke="#cf8c52" stroke-width="12" stroke-linecap="round"/>
+  <path d="M515 335c-59-6-86-31-104-72" fill="none" stroke="#d3a966" stroke-width="12" stroke-linecap="round"/>
+  <rect x="470" y="126" width="73" height="168" rx="19" fill="#9aa7b2" stroke="#65717c" stroke-width="5"/>
+  <g fill="#49545f">
+    <circle cx="485" cy="145" r="7"/>
+    <circle cx="527" cy="145" r="7"/>
+    <circle cx="485" cy="276" r="7"/>
+    <circle cx="527" cy="276" r="7"/>
+  </g>
+  <g fill="none" stroke-width="8">
+    <circle cx="485" cy="145" r="27" stroke="#ef4a4a"/>
+    <circle cx="527" cy="145" r="27" stroke="#4d85ef"/>
+    <circle cx="485" cy="276" r="27" stroke="#f0b13f"/>
+    <circle cx="527" cy="276" r="27" stroke="#ef4a4a"/>
+  </g>
+  <g stroke="#eff3f5" stroke-width="3" stroke-linecap="round">
+    <path d="M478 145h14M485 138v14"/>
+    <path d="M520 145h14M527 138v14"/>
+    <path d="M478 276h14M485 269v14"/>
+    <path d="M520 276h14M527 269v14"/>
+  </g>
+  <rect x="42" y="344" width="148" height="20" rx="10" fill="#29333b" opacity=".55"/>
+</svg>

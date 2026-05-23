@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-labelledby="title desc">
+  <title id="title">Bottom screw location diagram</title>
+  <desc id="desc">Original phone bottom edge repair diagram with exterior screw positions highlighted.</desc>
+  <defs>
+    <linearGradient id="mat" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#c9d5d1"/>
+      <stop offset="1" stop-color="#84928f"/>
+    </linearGradient>
+    <linearGradient id="phone" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#252a31"/>
+      <stop offset="1" stop-color="#0e1116"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="460" fill="url(#mat)"/>
+  <path d="M55 94h155" stroke="#f4f1e9" stroke-width="16" stroke-linecap="round" opacity=".55"/>
+  <path d="M456 83h104" stroke="#353c43" stroke-width="9" stroke-linecap="round" opacity=".32"/>
+  <rect x="76" y="126" width="488" height="286" rx="74" fill="url(#phone)" stroke="#4f5962" stroke-width="6"/>
+  <rect x="164" y="140" width="312" height="12" rx="6" fill="#606a74" opacity=".35"/>
+  <path d="M185 358h270" stroke="#66717d" stroke-width="5" stroke-linecap="round"/>
+  <rect x="278" y="341" width="84" height="28" rx="12" fill="#080a0e" stroke="#4c5661" stroke-width="4"/>
+  <g fill="#7c8791">
+    <circle cx="222" cy="354" r="7"/>
+    <circle cx="418" cy="354" r="7"/>
+  </g>
+  <g fill="none" stroke="#ef4a4a" stroke-width="8">
+    <circle cx="222" cy="354" r="31"/>
+    <circle cx="418" cy="354" r="31"/>
+  </g>
+  <g stroke="#d2d9df" stroke-width="4" stroke-linecap="round" opacity=".9">
+    <path d="M214 354h16"/>
+    <path d="M222 346v16"/>
+    <path d="M410 354h16"/>
+    <path d="M418 346v16"/>
+  </g>
+  <rect x="492" y="256" width="84" height="26" rx="13" fill="#e2b35f" transform="rotate(-28 492 256)"/>
+  <rect x="524" y="225" width="31" height="92" rx="15" fill="#222a31" transform="rotate(-28 524 225)"/>
+  <circle cx="121" cy="74" r="12" fill="#ef4a4a"/>
+  <circle cx="154" cy="74" r="12" fill="#4d85ef"/>
+  <circle cx="187" cy="74" r="12" fill="#f0b13f"/>
+</svg>
