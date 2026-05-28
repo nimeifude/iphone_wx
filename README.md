@@ -1,4 +1,4 @@
-# Apple iPhone Repair Guides
+# FixMob
 
 Static English iPhone repair guide site for GitHub Pages or another static host.
 

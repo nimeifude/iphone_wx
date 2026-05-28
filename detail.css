@@ -45,6 +45,18 @@ h1, h2, h3, p { margin-top: 0; }
   color: #253246;
 }
 
+.topbar__brand {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.topbar__logo {
+  display: block;
+  width: clamp(118px, 14vw, 154px);
+  height: auto;
+}
+
 .topbar__links {
   display: flex;
   flex-wrap: wrap;

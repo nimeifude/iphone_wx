@@ -1,18 +1,21 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Apple iPhone Repair Guides | Screens, Batteries, Back Glass</title>
+  <title>FixMob | Screens, Batteries, Back Glass</title>
   <meta name="description" content="Browse beginner Apple iPhone repair tutorials for screen replacement, battery replacement, and back glass replacement with step-by-step photos and model-specific screw tables.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://example.com/">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="assets/fixmob-mark.svg">
+
   <link rel="stylesheet" href="styles.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Apple iPhone Repair Guides",
+    "name": "FixMob",
     "description": "Model-by-model iPhone replacement tutorials for screens, batteries, and back glass with repair photos and screw tables.",
     "inLanguage": "en",
     "potentialAction": {
@@ -26,9 +29,8 @@
 <body>
   <header class="app-header">
     <nav class="brandbar" aria-label="Main navigation">
-      <a class="brand" href="#top" aria-label="Apple iPhone Repair Guides home">
-        <span class="brand-mark">i</span>
-        <span>Apple iPhone Repair Guides</span>
+      <a class="brand" href="#top" aria-label="FixMob home">
+        <img class="brand-logo" src="assets/fixmob-logo.svg" alt="FixMob">
       </a>
       <div class="quick-links">
         <a href="screw-location-photos.html">Screw Photos</a>
@@ -49,10 +51,8 @@
           <a class="ghost-btn" href="#models">Browse Models</a>
         </div>
       </div>
-      <div class="hero-gallery" aria-label="iPhone model artwork">
-        <div class="hero-phone hero-phone--one"></div>
-        <div class="hero-phone hero-phone--two"></div>
-        <div class="hero-phone hero-phone--three"></div>
+      <div class="hero-gallery" aria-label="iPhone repair tutorial workbench photo">
+        <img src="assets/home/iphone-repair-tutorial-banner.png?v=home-repair-banner-20260528" alt="Opened iPhone repair tutorial workbench with tools and screw tray" loading="eager">
       </div>
     </section>
   </header>
@@ -63,30 +63,30 @@
     <section class="screw-library-home" id="screw-photos" aria-labelledby="screw-library-title">
       <div class="section-heading">
         <p class="eyebrow">Screw Photo Library</p>
-        <h2 id="screw-library-title">Real iPhone screw location photos across the lineup</h2>
-        <p>Use the dedicated photo index to compare screw markers, bracket locations, and millimeter screw notes before reassembly.</p>
+        <h2 id="screw-library-title">Screw Location Photo Module</h2>
+        <p>Open the dedicated screw photo library to compare bottom screws, display brackets, back glass locations, and model-specific length notes.</p>
       </div>
       <div class="home-screw-grid">
         <article>
-          <img src="assets/home-bottom-screws-photo.png" alt="Bottom phone screw location photo" loading="lazy">
-          <div><h3>Bottom pentalobe screw photos</h3><p>Start with model-specific exterior screw locations.</p></div>
+          <img src="assets/repair-photos/local/BO6lEF2W1kX5S1sI-huge.jpg?v=home-screw-module-20260528" alt="iPhone bottom pentalobe screw location photo" loading="lazy">
+          <div><h3>Bottom screw locations</h3><p>Check exterior pentalobe screw positions before opening the device.</p></div>
         </article>
         <article>
-          <img src="assets/home-display-bracket-screws-photo.png" alt="Display bracket screw location photo" loading="lazy">
-          <div><h3>Display bracket screw photos</h3><p>Find connector covers, markers, and length notes.</p></div>
+          <img src="assets/repair-photos/local/XWpMWTY4DJnfeUAy-huge.jpg?v=home-screw-module-20260528" alt="iPhone connector cover screw location photo" loading="lazy">
+          <div><h3>Connector cover screws</h3><p>Compare bracket screws, marker colors, and length notes by model.</p></div>
         </article>
         <article>
-          <img src="assets/home-backglass-screws-photo.png" alt="Back glass screw location photo" loading="lazy">
-          <div><h3>Back glass screw photos</h3><p>Browse rear access photos for newer iPhones.</p></div>
+          <img src="assets/repair-photos/local/yZRBM6ZtRaGNF4jK-huge.jpg?v=home-screw-module-20260528" alt="iPhone internal bracket screw location photo" loading="lazy">
+          <div><h3>Internal bracket maps</h3><p>Use teardown photos to keep each screw matched to its original location.</p></div>
         </article>
       </div>
-      <a class="section-cta" href="screw-location-photos.html">Browse the full iPhone screw photo library</a>
+      <a class="section-cta" href="screw-location-photos.html">Browse screw location photos</a>
     </section>
 
     <section class="model-nav" id="models" aria-labelledby="model-title">
       <div class="section-heading section-heading--row">
         <div> 
-          <h2 id="model-title">Browse iPhone X and newer models</h2>
+          <h2 id="model-title">Complete Apple iPhone Model List</h2>
           <p>Verified status means the tutorial has real repair photos and a screw table with millimeter measurements. Pending pages are kept online only as structured placeholders until reliable sources are added.</p>
         </div>
         <label class="search-box">
@@ -96,7 +96,6 @@
       </div>
 
       <div class="series-filter" aria-label="Filter by series">
-        <button class="series-pill is-active" type="button" data-series="all">All</button>
         <button class="series-pill" type="button" data-series="X">X Series</button>
         <button class="series-pill" type="button" data-series="11">11 Series</button>
         <button class="series-pill" type="button" data-series="12">12 Series</button>
@@ -104,7 +103,7 @@
         <button class="series-pill" type="button" data-series="14">14 Series</button>
         <button class="series-pill" type="button" data-series="15">15 Series</button>
         <button class="series-pill" type="button" data-series="16">16 Series</button>
-        <button class="series-pill" type="button" data-series="17">17 Series</button>
+        <button class="series-pill is-active" type="button" data-series="17">17 Series</button>
       </div>
 
       <div class="model-grid" id="model-grid" aria-live="polite"></div>
@@ -128,6 +127,7 @@
     </section>
   </main>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=home-models-20260528b"></script>
 </body>
 </html>
+

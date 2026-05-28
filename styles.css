@@ -50,19 +50,18 @@ h1, h2, h3, p { margin-top: 0; }
 }
 
 .brand {
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: #fff;
   text-decoration: none;
   font-weight: 900;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .18);
 }
 
-.brand-mark {
-  display: inline-grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  color: #111821;
-  background: #fff;
-  font-size: 1.28rem;
+.brand-logo {
+  display: block;
+  width: clamp(132px, 16vw, 172px);
+  height: auto;
 }
 
 .quick-links {
@@ -115,6 +114,18 @@ h3 {
   line-height: 1.26;
 }
 
+.content-brand {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 18px;
+  text-decoration: none;
+}
+
+.content-brand__logo {
+  width: 148px;
+  height: auto;
+}
+
 .hero-copy p {
   max-width: 760px;
   color: rgba(255, 255, 255, .84);
@@ -146,6 +157,18 @@ h3 {
 .hero-gallery {
   position: relative;
   min-height: 430px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f7f8fa;
+  box-shadow: var(--shadow);
+}
+
+.hero-gallery img {
+  width: 100%;
+  height: 430px;
+  object-fit: cover;
+  object-position: center;
+  background: #f7f8fa;
 }
 
 .hero-phone {
@@ -336,16 +359,18 @@ main {
 }
 
 .model-art {
-  display: grid;
-  place-items: center;
-  min-height: 210px;
-  background: linear-gradient(135deg, #eef3f8, #dfe7ef);
+  position: relative;
+  min-height: 220px;
+  background: #f7f8fa;
+  overflow: hidden;
 }
 
 .model-art img {
-  width: min(78%, 178px);
-  height: 188px;
+  width: 100%;
+  height: 220px;
   object-fit: contain;
+  object-position: center;
+  padding: 12px;
 }
 
 .model-body {
@@ -441,8 +466,9 @@ main {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 10;
-  object-fit: cover;
-  background: #e7edf4;
+  object-fit: contain;
+  padding: 12px;
+  background: #f7f8fa;
 }
 
 .home-screw-grid div {
@@ -507,7 +533,8 @@ main {
 
 @media (max-width: 540px) {
   .quick-links { justify-content: flex-start; }
-  .hero-gallery { display: none; }
+  .hero-gallery { min-height: 280px; }
+  .hero-gallery img { height: 280px; }
   .model-grid { grid-template-columns: 1fr; }
   .model-card { min-height: 0; }
 }

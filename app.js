@@ -56,7 +56,7 @@ const models = [
 ].map(([name, series, year, size, port, camera, color]) => ({ name, series, year, size, port, camera, color }));
 
 let currentRepair = "screen";
-let currentSeries = "all";
+let currentSeries = "17";
 const verifiedGuides = new Set([
   "screen/iphone-x",
   "battery/iphone-x",
@@ -184,7 +184,44 @@ function phoneSvg(model) {
     </svg>`;
 }
 
+const modelPhotoOverrides = {
+  "iPhone X": "assets/home/models/iphone-x.jpg",
+  "iPhone XR": "assets/home/models/iphone-xr.jpg",
+  "iPhone XS": "assets/home/models/iphone-xs.jpg",
+  "iPhone XS Max": "assets/home/models/iphone-xs-max.jpg",
+  "iPhone 11": "assets/home/models/iphone-11.jpg",
+  "iPhone 11 Pro": "assets/home/models/iphone-11-pro.jpg",
+  "iPhone 11 Pro Max": "assets/home/models/iphone-11-pro-max.jpg",
+  "iPhone 12 mini": "assets/home/models/iphone-12-mini.png",
+  "iPhone 12": "assets/home/models/iphone-12.png",
+  "iPhone 12 Pro": "assets/home/models/iphone-12-pro.jpg",
+  "iPhone 12 Pro Max": "assets/home/models/iphone-12-pro-max.jpg",
+  "iPhone 13 mini": "assets/home/models/iphone-13-mini.png",
+  "iPhone 13": "assets/home/models/iphone-13.png",
+  "iPhone 13 Pro": "assets/home/models/iphone-13-pro.png",
+  "iPhone 13 Pro Max": "assets/home/models/iphone-13-pro-max.png",
+  "iPhone 14": "assets/home/models/iphone-14.png",
+  "iPhone 14 Plus": "assets/home/models/iphone-14-plus.png",
+  "iPhone 14 Pro": "assets/home/models/iphone-14-pro.png",
+  "iPhone 14 Pro Max": "assets/home/models/iphone-14-pro-max.png",
+  "iPhone 15": "assets/home/models/iphone-15.png",
+  "iPhone 15 Plus": "assets/home/models/iphone-15-plus.png",
+  "iPhone 15 Pro": "assets/home/models/iphone-15-pro.png",
+  "iPhone 15 Pro Max": "assets/home/models/iphone-15-pro-max.png",
+  "iPhone 16e": "assets/home/models/iphone-16e.png",
+  "iPhone 16": "assets/home/models/iphone-16.png",
+  "iPhone 16 Plus": "assets/home/models/iphone-16-plus.png",
+  "iPhone 16 Pro": "assets/home/models/iphone-16-pro.png",
+  "iPhone 16 Pro Max": "assets/home/models/iphone-16-pro-max.png",
+  "iPhone 17e": "assets/home/17e.jpg",
+  "iPhone 17": "assets/home/17.jpg",
+  "iPhone Air": "assets/home/17air.jpg",
+  "iPhone 17 Pro": "assets/home/17pro.jpeg",
+  "iPhone 17 Pro Max": "assets/home/iPhone17Promax.jpg"
+};
+
 function imageData(model) {
+  if (modelPhotoOverrides[model.name]) return `${modelPhotoOverrides[model.name]}?v=model-photos-20260528`;
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(phoneSvg(model))}`;
 }
 
@@ -214,7 +251,7 @@ function renderModels() {
   grid.innerHTML = visible.map(model => `
     <article class="model-card">
       <div class="model-art">
-        <img src="${imageData(model)}" alt="${model.name} phone illustration">
+        <img src="${imageData(model)}" alt="${model.name} front and back phone photo" loading="lazy">
       </div>
       <div class="model-body">
         <h3>${model.name}</h3>
